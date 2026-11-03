@@ -1,0 +1,63 @@
+{
+  "expo": {
+    "name": "JAK Projects",
+    "slug": "jak-projects",
+    "version": "1.1.1",
+    "orientation": "default",
+    "icon": "./assets/icon.png",
+    "userInterfaceStyle": "automatic",
+    "scheme": "jakprojects",
+    "splash": {
+      "image": "./assets/splash-icon.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#FFFFFF"
+    },
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.jadahalkhozama.projects",
+      "infoPlist": {
+        "NSFaceIDUsageDescription": "Unlock JAK Projects with Face ID",
+        "NSCameraUsageDescription": "Take site photos",
+        "NSLocationWhenInUseUsageDescription": "Record where you check in for attendance"
+      }
+    },
+    "android": {
+      "package": "com.jadahalkhozama.projects",
+      "adaptiveIcon": {
+        "backgroundColor": "#2C4F82",
+        "foregroundImage": "./assets/adaptive-icon.png"
+      },
+      "permissions": [
+        "CAMERA",
+        "ACCESS_FINE_LOCATION",
+        "ACCESS_COARSE_LOCATION",
+        "USE_BIOMETRIC",
+        "USE_FINGERPRINT"
+      ],
+      "predictiveBackGestureEnabled": false
+    },
+    "web": {
+      "favicon": "./assets/favicon.png",
+      "name": "JAK Projects",
+      "shortName": "JAK",
+      "themeColor": "#2C4F82",
+      "backgroundColor": "#F4F6FA",
+      "output": "single"
+    },
+    "plugins": [
+      "expo-secure-store",
+      [
+        "expo-local-authentication",
+        { "faceIDPermission": "Unlock JAK Projects with Face ID" }
+      ],
+      [
+        "expo-image-picker",
+        { "cameraPermission": "Take site photos for the project gallery" }
+      ],
+      [
+        "expo-location",
+        { "locationWhenInUsePermission": "Record where you check in for attendance" }
+      ]
+    ]
+  }
+}
