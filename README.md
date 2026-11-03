@@ -76,7 +76,10 @@ npm run dist
 # → desktop/release/JAK-flowTracker-<version>-portable.exe (runs without installing)
 ```
 
-Build on Windows, or on Linux with Wine installed. Put the Supabase keys in `.env` first, or the desktop app runs in demo mode. You can also run the **Windows app** workflow on GitHub (Actions tab → Windows app → Run workflow) and download the .exe from the run.
+Build on Windows, or on Linux with Wine installed. Put the Supabase keys in `.env` first, or the desktop app runs in demo mode. GitHub also builds it automatically on every push (the **Windows app** workflow) and publishes it to the `windows-latest` release:
+
+- Installer: https://github.com/alhussennawaf/trackflow/releases/download/windows-latest/JAK-flowTracker-Setup.exe
+- Portable: https://github.com/alhussennawaf/trackflow/releases/download/windows-latest/JAK-flowTracker-portable.exe
 
 ## Deploy the web app
 

@@ -1,7 +1,15 @@
 name: Windows app
 
+# Builds the .exe and publishes it to the "windows-latest" release, so the download links never change:
+#   .../releases/download/windows-latest/JAK-flowTracker-Setup.exe
+#   .../releases/download/windows-latest/JAK-flowTracker-portable.exe
 on:
   workflow_dispatch:
+  push:
+    branches: [main, claude/nice-ride-1n4qul]
+
+permissions:
+  contents: write
 
 jobs:
   build:
@@ -23,7 +31,19 @@ jobs:
           npm install --no-audit --no-fund
           rm -rf app && cp -r ../dist app
           npx electron-builder --win --x64
+          mkdir -p ../out
+          cp release/JAK-flowTracker-Setup-*.exe ../out/JAK-flowTracker-Setup.exe
+          cp release/JAK-flowTracker-*-portable.exe ../out/JAK-flowTracker-portable.exe
       - uses: actions/upload-artifact@v4
         with:
           name: JAK-flowTracker-windows
-          path: desktop/release/*.exe
+          path: out/*.exe
+      - name: Publish download links
+        shell: bash
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh release view windows-latest >/dev/null 2>&1 || gh release create windows-latest \
+            --title "JAK - flowTracker for Windows" --prerelease --target "$GITHUB_SHA" \
+            --notes "Latest Windows build. JAK-flowTracker-Setup.exe installs the app; JAK-flowTracker-portable.exe runs without installing."
+          gh release upload windows-latest out/JAK-flowTracker-Setup.exe out/JAK-flowTracker-portable.exe --clobber

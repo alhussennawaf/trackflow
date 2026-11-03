@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
   <color name="brand">#2C4F82</color>
+  <color name="icon_bg">#FFFFFF</color>
   <style name="AppTheme" parent="@android:style/Theme.Material.Light.NoActionBar">
     <item name="android:colorPrimary">#2C4F82</item>
     <item name="android:colorPrimaryDark">#1C3354</item>
