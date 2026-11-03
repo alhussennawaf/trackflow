@@ -1,4 +1,4 @@
-# JAK Projects
+# JAK - flowTracker
 
 Construction project management app for **Jadah Al Khozama International**. One codebase builds the **Android app** and the **web app** (Expo / React Native + react-native-web). Data lives in **Supabase** (Postgres, login, file storage). Without Supabase keys the app runs in **demo mode** with sample data stored on the device.
 
@@ -63,6 +63,20 @@ android-shell/build.sh path/to/release.keystore KEYSTORE_PASSWORD
 ```
 
 Set the Supabase keys in `.env` before building so the APK talks to the real server. Always sign updates with the same keystore, or phones will refuse to install the update. Bump `versionCode` in `android-shell/AndroidManifest.xml` for each release.
+
+## Build the Windows app (.exe)
+
+`desktop/` wraps the web build in Electron and packages it for Windows with the JAK logo as the app icon (`desktop/build/icon.ico`, made from `desktop/build/jak-logo.png`).
+
+```bash
+cd desktop
+npm install
+npm run dist
+# → desktop/release/JAK-flowTracker-Setup-<version>.exe   (installer: Start menu + desktop shortcut)
+# → desktop/release/JAK-flowTracker-<version>-portable.exe (runs without installing)
+```
+
+Build on Windows, or on Linux with Wine installed. Put the Supabase keys in `.env` first, or the desktop app runs in demo mode. You can also run the **Windows app** workflow on GitHub (Actions tab → Windows app → Run workflow) and download the .exe from the run.
 
 ## Deploy the web app
 

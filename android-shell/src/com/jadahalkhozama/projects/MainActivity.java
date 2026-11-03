@@ -264,7 +264,7 @@ public class MainActivity extends Activity {
   void authenticate(final String id) {
     if (Build.VERSION.SDK_INT >= 28) {
       BiometricPrompt prompt = new BiometricPrompt.Builder(this)
-          .setTitle("Unlock JAK Projects")
+          .setTitle("Unlock JAK - flowTracker")
           .setSubtitle("Use your fingerprint or face")
           .setNegativeButton("Use PIN", uiExec, new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface d, int which) { reply("__jakBio", id, false); }

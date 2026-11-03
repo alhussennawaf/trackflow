@@ -11,7 +11,7 @@
   <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
   <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
   <application
-      android:label="JAK Projects"
+      android:label="JAK - flowTracker"
       android:icon="@mipmap/ic_launcher"
       android:theme="@style/AppTheme"
       android:allowBackup="true"

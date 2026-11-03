@@ -1,6 +1,6 @@
 {
   "expo": {
-    "name": "JAK Projects",
+    "name": "JAK - flowTracker",
     "slug": "jak-projects",
     "version": "1.1.1",
     "orientation": "default",
@@ -16,7 +16,7 @@
       "supportsTablet": true,
       "bundleIdentifier": "com.jadahalkhozama.projects",
       "infoPlist": {
-        "NSFaceIDUsageDescription": "Unlock JAK Projects with Face ID",
+        "NSFaceIDUsageDescription": "Unlock JAK - flowTracker with Face ID",
         "NSCameraUsageDescription": "Take site photos",
         "NSLocationWhenInUseUsageDescription": "Record where you check in for attendance"
       }
@@ -38,8 +38,8 @@
     },
     "web": {
       "favicon": "./assets/favicon.png",
-      "name": "JAK Projects",
-      "shortName": "JAK",
+      "name": "JAK - flowTracker",
+      "shortName": "flowTracker",
       "themeColor": "#2C4F82",
       "backgroundColor": "#F4F6FA",
       "output": "single"
@@ -48,7 +48,7 @@
       "expo-secure-store",
       [
         "expo-local-authentication",
-        { "faceIDPermission": "Unlock JAK Projects with Face ID" }
+        { "faceIDPermission": "Unlock JAK - flowTracker with Face ID" }
       ],
       [
         "expo-image-picker",

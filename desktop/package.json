@@ -1,0 +1,60 @@
+{
+  "name": "jak-flowtracker-desktop",
+  "productName": "JAK - flowTracker",
+  "version": "1.1.1",
+  "description": "JAK - flowTracker for Windows",
+  "author": "Jadah Al Khozama International",
+  "main": "main.js",
+  "private": true,
+  "scripts": {
+    "web": "cd .. && npm run build:web && rm -rf desktop/app && cp -r dist desktop/app",
+    "start": "electron .",
+    "dist": "npm run web && electron-builder --win --x64"
+  },
+  "devDependencies": {
+    "electron": "38.2.0",
+    "electron-builder": "26.0.12"
+  },
+  "build": {
+    "appId": "com.jadahalkhozama.flowtracker",
+    "productName": "JAK - flowTracker",
+    "copyright": "Jadah Al Khozama International",
+    "directories": {
+      "output": "release",
+      "buildResources": "build"
+    },
+    "files": [
+      "main.js",
+      "app/**/*"
+    ],
+    "win": {
+      "icon": "build/icon.ico",
+      "target": [
+        {
+          "target": "nsis",
+          "arch": [
+            "x64"
+          ]
+        },
+        {
+          "target": "portable",
+          "arch": [
+            "x64"
+          ]
+        }
+      ]
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true,
+      "shortcutName": "JAK - flowTracker",
+      "artifactName": "JAK-flowTracker-Setup-${version}.${ext}"
+    },
+    "portable": {
+      "artifactName": "JAK-flowTracker-${version}-portable.${ext}"
+    },
+    "publish": null
+  }
+}

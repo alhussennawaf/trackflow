@@ -39,7 +39,7 @@ function page(body: string, settings: Settings, landscape = false) {
   .muted { color: #667085; }
 </style></head><body>
 ${body}
-<div class="foot"><span>${esc(settings.company_name)} · ${esc(settings.company_name_ar)}</span><span>Generated ${fmtDate(new Date().toISOString())} · JAK Projects</span></div>
+<div class="foot"><span>${esc(settings.company_name)} · ${esc(settings.company_name_ar)}</span><span>Generated ${fmtDate(new Date().toISOString())} · JAK - flowTracker</span></div>
 </body></html>`;
 }
 

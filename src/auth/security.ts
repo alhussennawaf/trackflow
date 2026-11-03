@@ -44,7 +44,7 @@ export async function setBiometricEnabled(uid: string, on: boolean) {
 export async function biometricPrompt() {
   if (inAndroidShell) return shellAuthenticate();
   const r = await LocalAuthentication.authenticateAsync({
-    promptMessage: 'Unlock JAK Projects',
+    promptMessage: 'Unlock JAK - flowTracker',
     cancelLabel: 'Use PIN',
     disableDeviceFallback: true,
   });
