@@ -6,6 +6,7 @@ The new backend: one database shared by JAK staff and outside companies, with ev
   - `…_core.sql` tables, permission rules, sign-up rules, numbering and workflows
   - `…_storage.sql` the private `files` bucket and its rules
   - `…_seed.sql` company settings, the 29 document types and their workflows, trade and level codes
+  - `…_code_safeguards.sql` blocks renaming a code once it appears in reference numbers (retire it instead)
 - `tests/` — runs the migrations on a local PostgreSQL and checks every rule by acting as each kind of user
 - `schema.sql` — **old** schema used by the current proof-of-concept app. Not part of the new backend.
 
@@ -44,6 +45,10 @@ Settings that may change later live in `org_settings`, for example `sequence_sco
 4. Sign in first with the account that should be the administrator.
 
 ## Run the tests
+
+`tests/live_check.sql` checks the key rules on a live project (SQL Editor or management API). It undoes everything it created and ends with `LIVE CHECK PASSED (20 checks)`, shown as an error on purpose.
+
+The full local suite:
 
 Needs PostgreSQL 15 or newer running locally.
 

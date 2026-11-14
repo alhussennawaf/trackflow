@@ -248,5 +248,20 @@ select test.act_as(:'pm');
 select test.ok((select count(*) from public.audit_log) = 0, 'only admins can read the audit log');
 reset role;
 
+-- ------------------------------------------------------------------ code safeguards
+select test.act_as(:'admin');
+select test.fails($$update public.trades set code = 'CI' where code = 'CV'$$, 'a trade code used in reference numbers cannot be renamed');
+select test.fails($$update public.companies set code = 'SHC' where code = 'SCC'$$, 'a company code used in reference numbers cannot be renamed');
+update public.trades set active = false where code = 'ME';
+select test.ok((select not active from public.trades where code = 'ME'), 'an unused trade can be retired');
+insert into public.trades (code, name, sort) values ('SL', 'Solar', 110);
+insert into public.sub_trades (trade_code, code, name) values ('SL', 'PV', 'Solar panels');
+update public.trades set code = 'SO' where code = 'SL';
+select test.ok(exists (select 1 from public.sub_trades where trade_code = 'SO' and code = 'PV'), 'a new, unused trade can still be renamed');
+reset role;
+select test.act_as(:'pm');
+select test.fails($$insert into public.trades (code, name) values ('XX', 'Not allowed')$$, 'only admins can add trades');
+reset role;
+
 \echo
 \echo 'All backend rule tests passed.'
